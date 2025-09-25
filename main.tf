@@ -1,3 +1,8 @@
+provider "aws" {
+  region = "us-east-2" 
+}
+
+
 data "aws_region" "current" {}
 
 resource "random_string" "suffix" {
@@ -70,7 +75,7 @@ resource "aws_apigatewayv2_authorizer" "authorizer" {
   api_id = aws_apigatewayv2_api.api.id
   authorizer_type = "JWT"
   name = "CognitoAuthorizer"
-  identity_source = ["$request.header.Authorization"]
+  identity_sources = ["$request.header.Authorization"]
 
   jwt_configuration {
     audience = [aws_cognito_user_pool_client.client.id]
