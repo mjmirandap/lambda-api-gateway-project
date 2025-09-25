@@ -54,9 +54,13 @@ Esta es la política crítica que permite a Terraform crear los roles de ejecuci
 ```
 
 -----
-## 3\. Otras políticas de AWS que son recomendables activar en caso que presente fallas
+## 3\. Otras políticas de AWS 
 
+⚠️Solo son recomendables activar en caso que presente fallas
+
+``` bash
 📦AdministratorAccess
 📦AmazonEC2ContainerRegistryFullAccess
 📦AmazonEC2FullAccess
 📦AmazonECS_FullAccess
+```
