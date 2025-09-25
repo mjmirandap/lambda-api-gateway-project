@@ -14,7 +14,6 @@ Esta política otorga permisos para crear los recursos de la aplicación *server
             "Action": [
                 "lambda:*",
                 "apigateway:*",
-                "apigatewayv2:*",
                 "cognito-idp:*",
                 "logs:CreateLogGroup",
                 "logs:CreateLogStream",
@@ -54,3 +53,10 @@ Esta es la política crítica que permite a Terraform crear los roles de ejecuci
 }
 ```
 
+-----
+## 3\. Otras políticas de AWS que son recomendables activar en caso que presente fallas
+
+📦AdministratorAccess
+📦AmazonEC2ContainerRegistryFullAccess
+📦AmazonEC2FullAccess
+📦AmazonECS_FullAccess
