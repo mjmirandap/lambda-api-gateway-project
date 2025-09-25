@@ -11,7 +11,7 @@ resource "random_string" "suffix" {
   upper   = false
 }
 
-# Bloque 1: IAM Role para Lambda
+# IAM Role para Lambda
 resource "aws_iam_role" "lambda_exec_role" {
   name = "lambda-exec-role-${random_string.suffix.result}"
   assume_role_policy = jsonencode({
@@ -31,14 +31,14 @@ resource "aws_iam_role_policy_attachment" "lambda_basic_execution" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
-# Bloque 2: Compresion de Codigo
+# Compresion de Codigo
 data "archive_file" "lambda_zip" {
   type        = "zip"
   source_file = "src/lambda_handler.py"
   output_path = "lambda_handler.zip"
 }
 
-# Bloque 3: Lambda Function
+# Creación de la función Lambda 
 resource "aws_lambda_function" "greeting_lambda" {
   function_name    = "greeting-lambda-${random_string.suffix.result}"
   filename         = data.archive_file.lambda_zip.output_path
@@ -49,12 +49,12 @@ resource "aws_lambda_function" "greeting_lambda" {
 
   environment {
     variables = {
-      GREETING_MESSAGE = "Hola Milton, tu despliegue de IaC fue exitoso!" # Variable de entorno solicitada
+      GREETING_MESSAGE = "Hola Milton, tu despliegue de IaC fue exitoso!" 
     }
   }
 }
 
-# Bloque 4: Cognito (Minimo para el Authorizer)
+# Cognito 
 resource "aws_cognito_user_pool" "pool" {
   name = "app-pool-${random_string.suffix.result}"
 }
@@ -64,13 +64,13 @@ resource "aws_cognito_user_pool_client" "client" {
   user_pool_id = aws_cognito_user_pool.pool.id
 }
 
-# Bloque 5: API Gateway 
+# API Gateway 
 resource "aws_apigatewayv2_api" "api" {
   name          = "http-greeting-api-${random_string.suffix.result}"
   protocol_type = "HTTP"
 }
 
-# Bloque 6: Authorizer Cognito
+# Authorizer Cognito
 resource "aws_apigatewayv2_authorizer" "authorizer" {
   api_id = aws_apigatewayv2_api.api.id
   authorizer_type = "JWT"
@@ -83,7 +83,7 @@ resource "aws_apigatewayv2_authorizer" "authorizer" {
   }
 }
 
-# Bloque 7: Integracion con Lambda
+# Integracion de cognito con Lambda
 resource "aws_apigatewayv2_integration" "lambda_integration" {
   api_id           = aws_apigatewayv2_api.api.id
   integration_type = "AWS_PROXY"
@@ -91,7 +91,7 @@ resource "aws_apigatewayv2_integration" "lambda_integration" {
   integration_method = "POST"
 }
 
-# Bloque 8: Ruta y Stage
+# Ruta get y estado
 resource "aws_apigatewayv2_route" "default_route" {
   api_id    = aws_apigatewayv2_api.api.id
   route_key = "GET /"
@@ -104,7 +104,7 @@ resource "aws_apigatewayv2_stage" "default_stage" {
   auto_deploy = true
 }
 
-# Bloque 9: Permiso para invocar la Lambda desde API Gateway
+# Permiso para invocar la lambda desde API gw
 resource "aws_lambda_permission" "api_gateway_permission" {
   statement_id  = "AllowAPIGatewayInvoke"
   action        = "lambda:InvokeFunction"
