@@ -101,7 +101,7 @@ aws cognito-idp admin-confirm-sign-up \
 #3. Autenticar (command_authenticate)
 aws cognito-idp initiate-auth \
   --auth-flow USER_PASSWORD_AUTH \
-  --client-id 6rbpgcvolia7n4132c1tpi8v1s \
+  --client-id <cognito_client_id> \
   --auth-parameters USERNAME=yourUserName,PASSWORD='strongPassword' 
   #Si PASSWORD coma (,) escapar con backslash (\)
       
