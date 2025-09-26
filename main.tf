@@ -49,7 +49,7 @@ resource "aws_lambda_function" "greeting_lambda" {
 
   environment {
     variables = {
-      GREETING_MESSAGE = "Hola Milton, tu despliegue de IaC fue exitoso!" 
+      GREETING_MESSAGE = "Hola, tu despliegue de IaC fue exitoso!" 
     }
   }
 }
@@ -62,6 +62,10 @@ resource "aws_cognito_user_pool" "pool" {
 resource "aws_cognito_user_pool_client" "client" {
   name         = "api-client"
   user_pool_id = aws_cognito_user_pool.pool.id
+  explicit_auth_flows = [
+    "ALLOW_USER_PASSWORD_AUTH",
+    "ALLOW_REFRESH_TOKEN_AUTH"
+  ]
 }
 
 # API Gateway 
@@ -96,6 +100,8 @@ resource "aws_apigatewayv2_route" "default_route" {
   api_id    = aws_apigatewayv2_api.api.id
   route_key = "GET /"
   target    = "integrations/${aws_apigatewayv2_integration.lambda_integration.id}"
+  authorization_type   = "JWT" 
+  authorizer_id        = aws_apigatewayv2_authorizer.authorizer.id
 }
 
 resource "aws_apigatewayv2_stage" "default_stage" {
