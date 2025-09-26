@@ -64,7 +64,8 @@ Esta es la política crítica que permite a Terraform crear los roles de ejecuci
 📦AmazonECS_FullAccess
 ```
 
-## 4\. Salidas
+# Outputs
+## 1. Variables de salida
 ``` shell
 URL del API Gateway = api_gateway_url
 ARN de la Lambda = lambda_arn 
@@ -79,7 +80,7 @@ cognito_client_id
 
 ```
 
-## 5. Comandos
+## 2. Comandos
 
 ``` shell
 #Son generados como salidas extras, la info encerrada en corchetes [] la generará el output, 
