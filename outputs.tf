@@ -30,9 +30,9 @@ output "command_signup" {
   value = <<-EOT
       aws cognito-idp sign-up \
       --client-id ${aws_cognito_user_pool_client.client.id} \
-      --username yourUserName \
-      --password 'strongPassword' \
-      --user-attributes Name=email,Value=yourEMail@domain.com
+      --username <yourUserName> \
+      --password '<strongPassword>' \
+      --user-attributes Name=email,Value=<yourEMail@domain.com>
 
 }
 
@@ -41,7 +41,7 @@ output "command_confirm" {
   value = <<-EOT
     aws cognito-idp admin-confirm-sign-up \
       --user-pool-id ${aws_cognito_user_pool.pool.id} \
-      --username yourUserName
+      --username <yourUserName>
   
 }
 
@@ -51,7 +51,7 @@ output "command_authenticate" {
     aws cognito-idp initiate-auth \
       --auth-flow USER_PASSWORD_AUTH \
       --client-id ${aws_cognito_user_pool_client.client.id} \
-      --auth-parameters USERNAME=yourUserName,PASSWORD='strongPassword'
+      --auth-parameters USERNAME=<yourUserName>,PASSWORD='<strongPassword>'
   
 }
 
