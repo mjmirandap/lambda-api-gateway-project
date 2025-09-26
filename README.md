@@ -83,8 +83,9 @@ cognito_client_id
 ## 2. Comandos
 
 ``` shell
-#Son generados como salidas extras, la info encerrada en corchetes [] la generará el output, 
-#la encerrada <> debe ser ingresada por ti
+#Son generados como salidas extras, la información encerrada en corchetes [] la generará el output de Terraform, 
+#la información encerrada <> debe ser ingresada por ti para la ejecución en la terminal
+
 #Ejecutar en este orden
 
 #1. Registrar usuario (command_signup)
