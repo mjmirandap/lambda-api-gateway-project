@@ -82,9 +82,12 @@ cognito_client_id
 
 ## 2. Comandos
 
+Para la ejecución de los comandos en la terminal, use la siguiente sintaxis:
+
+* **Valores de Terraform (Output):** La información encerrada en **corchetes `[]`** es generada automáticamente al ejecutar `$ terraform apply`. 
+* **Valores de l usuario:** La información encerrada en **signos `< >`** debe ser ingresada manualmente por usted (ej. su usuario, contraseña y correo).
 ``` shell
-#Son generados como salidas extras, la información encerrada en corchetes [] la generará el output de Terraform, 
-#la información encerrada <> debe ser ingresada por ti para la ejecución en la terminal
+
 
 #Ejecutar en este orden
 
