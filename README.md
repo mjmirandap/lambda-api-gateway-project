@@ -82,7 +82,7 @@ cognito_client_id
 ## 5. Comandos
 
 ``` shell
-#Son generados como salidas extras, la info encerrada en corchetes [] la generará el output la encerrada <> debe ser ingresada por ti
+#Son generados como salidas extras, la info encerrada en corchetes [] la generará el output, la encerrada <> debe ser ingresada por ti
 #Ejecutar en este orden
 
 #1. Registrar usuario (command_signup)
