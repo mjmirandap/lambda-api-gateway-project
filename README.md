@@ -82,27 +82,27 @@ cognito_client_id
 ## 5. Comandos
 
 ``` shell
-#Son generados como salidas extras con la información necesaria
+#Son generados como salidas extras, la info encerrada en corchetes [] la generará el output la encerrada <> debe ser ingresada por ti
 #Ejecutar en este orden
 
 #1. Registrar usuario (command_signup)
 aws cognito-idp sign-up \
---client-id <cognito_client_id> \
---username yourUserName \
---password 'strongPassword' \
---user-attributes Name=email,Value=yourEMail@domain.com
+--client-id [cognito_client_id] \
+--username <yourUserName> \
+--password '<strongPassword>' \
+--user-attributes Name=email,Value=<yourEMail@domain.com>
 
 #2. Confirmar usuario registrado (command_confirm)
 aws cognito-idp admin-confirm-sign-up \
-  --user-pool-id <cognito_user_pool_id> \
-  --username yourUserName
+  --user-pool-id [cognito_user_pool_id] \
+  --username <yourUserName>
 
 
 #3. Autenticar (command_authenticate)
 aws cognito-idp initiate-auth \
   --auth-flow USER_PASSWORD_AUTH \
-  --client-id <cognito_client_id> \
-  --auth-parameters USERNAME=yourUserName,PASSWORD='strongPassword' 
+  --client-id [cognito_client_id] \
+  --auth-parameters USERNAME=<<yourUserName>,PASSWORD='<strongPassword>' 
   #Si PASSWORD coma (,) escapar con backslash (\)
       
 #4. (Opcional)
