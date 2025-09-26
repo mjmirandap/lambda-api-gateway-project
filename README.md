@@ -83,7 +83,7 @@ Exportar a Hojas de cálculo
 Para la ejecución de los comandos en la terminal, use la siguiente sintaxis:
 
 * **Valores de Terraform (Output):** La información encerrada en **corchetes `[]`** es generada automáticamente al ejecutar `$ terraform apply`. 
-* **Valores de l usuario:** La información encerrada en **signos `< >`** debe ser ingresada manualmente por usted (ej. su usuario, contraseña y correo).
+* **Valores del usuario:** La información encerrada en **signos `< >`** debe ser ingresada manualmente por usted (ej. su usuario, contraseña y correo).
 ``` shell
 
 
