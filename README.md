@@ -66,19 +66,17 @@ Esta es la política crítica que permite a Terraform crear los roles de ejecuci
 
 # Outputs
 ## 1. Variables de salida
-``` shell
-URL del API Gateway = api_gateway_url
-ARN de la Lambda = lambda_arn 
-ID del autorizador Cognito = cognito_authorizer_id 
-
-#Extras
-cognito_user_pool_id
-cognito_client_id
-
-#Adicionalmente, comandos para replicar consumo autenticado
 
 
-```
+| Clave de Output             | Descripción                                                  |
+| --------------------------- | ------------------------------------------------------------ |
+| **`api_gateway_url`**       | URL base para consumir la API. Es el punto de entrada de la aplicación. |
+| **`lambda_arn`**            | ARN (Amazon Resource Name) de la función Lambda desplegada.  |
+| **`cognito_user_pool_id`**  | Identificador único del **Pool de Usuarios** de Amazon Cognito. |
+| **`cognito_client_id`**     | Identificador del **Cliente de Aplicación** de Cognito.      |
+| **`cognito_authorizer_id`** | ID del recurso Autorizador JWT en el API Gateway.            |
+
+Exportar a Hojas de cálculo
 
 ## 2. Comandos
 
